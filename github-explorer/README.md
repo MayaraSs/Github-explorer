@@ -17,11 +17,10 @@
 - [x] Agora vamos configurar o ESLint
 
       ```
-      -  yarn add eslint -D
-
+        yarn add eslint -D
       ```
 
-      Exclui a configuração antiga do eslint do packge json
+  Exclui a configuração antiga do eslint do packge json
 
       ```
 
