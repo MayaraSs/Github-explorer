@@ -17,78 +17,76 @@
 - [x] Agora vamos configurar o ESLint
 
       ```
-      yarn add eslint -D
+      -  yarn add eslint -D
 
-  ```
+      ```
 
-  - Exclui a configuração antiga do eslint do packge json
+      Exclui a configuração antiga do eslint do packge json
 
-  ```
+      ```
 
-  yarn eslint --init
+      - yarn eslint --init
 
-  ```
+      ```
 
-  - Como estou utilizando o yarn espero finalizar a execução do comando anterior e copio a última linha para instalar as dependências necessárias com o yarn.
+      Como estou utilizando o yarn espero finalizar a execução do comando anterior e copio a última linha para instalar as dependências necessárias com o yarn.
 
-  ```
+      ```
 
-  yarn add eslint-plugin-react@^7.20.0 @typescript-eslint/eslint-plugin@latest eslint-config-airbnb@latest eslint-plugin-import@^2.21.2 eslint-plugin-jsx-a11y@^6.3.0 eslint-plugin-react-hooks@^4 || ^3 || ^2.3.0 @typescript-eslint/parser@latest -D
+      - yarn add eslint-plugin-react@^7.20.0 @typescript-eslint/eslint-plugin@latest eslint-config-airbnb@latest eslint-plugin-import@^2.21.2 eslint-plugin-jsx-a11y@^6.3.0 eslint-plugin-react-hooks@^4 || ^3 || ^2.3.0 @typescript-eslint/parser@latest -D
 
-  ```
+      ```
 
-  - Crio um arquivo chamado eslintignore para ignorar o eslint em alguns arquivos.
+      Crio um arquivo chamado eslintignore para ignorar o eslint em alguns arquivos.
 
-  ```
+      ```
 
-  \*_/_.js
-  node_modules
-  build
+      - \*_/_.js
+      - node_modules
+      - build
 
-  ```
+      ```
 
-  - No arquivo .eslintrc vou adicionar
+      No arquivo .eslintrc vou adicionar
 
-  ```
+      ```
 
-  No extends: "plugin:@typescript-eslint/recommended"
-  No plugins: "react-hooks",
-  No rules: "react-hooks/rules-of-hooks": "error",
-  "react-hooks/exhaustive-deps": "warn",
-  "react/jsx-filename-extension": [1, { "extensions": [".tsx"] }],
-  "import/prefer-default-export": "off",
-  "import/extensions": [
-  "error",
-  "ignorePackages",
-  {
-  "ts": "never",
-  "tsx": "never"
-  }
-  ]
+      No extends: "plugin:@typescript-eslint/recommended"
+      No plugins: "react-hooks",
+      No rules: "react-hooks/rules-of-hooks": "error",
+      "react-hooks/exhaustive-deps": "warn",
+      "react/jsx-filename-extension": [1, { "extensions": [".tsx"] }],
+      "import/prefer-default-export": "off",
+      "import/extensions": [
+      "error",
+      "ignorePackages",
+      {
+      "ts": "never",
+      "tsx": "never"
+      }
+      ]
 
-  ```
+      ```
 
-  - Executo o comando abaixo, que irá permitir que o react entenda typescript nas importações.
+      Executo o comando abaixo, que irá permitir que o react entenda typescript nas importações.
 
-  ```
+      ```
 
-  yarn add eslint-import-resolver-typescript -D
+      - yarn add eslint-import-resolver-typescript -D
 
-  ```
+      ```
 
-  No meu arquivo .eslintrc adiciono
+      No meu arquivo .eslintrc adiciono
 
-  ```
+      ```
 
-  "settings": {
-  "import/resolver": {
-  "typescript": {}
-  }
-  }
+      "settings": {
+      "import/resolver": {
+      "typescript": {}
+      }
+      }
 
-  ```
-
-  ```
+      ```
 
 - [x] Configurando o Prettier
 
