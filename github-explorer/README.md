@@ -2,8 +2,6 @@
 
 # Iniciando o projeto
 
-![image](./image_do_projeto.png)
-
 # A parte de configuração do projeto é opcional e cada desenvolvedor pode utilizar do jeito que achar melhor.
 
 - [x] Template
@@ -203,3 +201,37 @@
     <GlobalStyle />
   </>
 ```
+
+Criei uma pasta chamada assets para armazenar todas as imagens utilizadas na aplicação.
+
+- [x] Estilizando Dashboard
+
+  Usando Css com typescript.
+
+  Entendendo o conceito de estado de componentes de encadeamento. Eu consigo colocar o input direto dentro do Form, isso significa que todo input dentro do Form vai ter esse stylo.
+
+  ```
+    export const Form = styled.form`
+    margin-top: 40px;
+    max-width: 700 px;
+
+    display: flex;
+
+    input {
+      flex: 1;
+      height: 70px;
+      padding: 0 24px;
+      border: 0;
+      border-radius: 5px 0 0 5px;
+    }
+  ```
+
+  Quando eu uso o & dentro do stylo eu estou m referindo ao próprio elemento.
+
+  Adicionei a biblioteca polished. QUe permite trabalhar com cores para clarear, escurecer, etc.
+
+  ```
+  yarn add polished
+  ```
+
+  Para incluir js dentro do meu css sempre uso essa sintaxe \${ ...}.
