@@ -193,6 +193,13 @@
     yarn add @types/styled-components -D
   ```
 
-  Se eu fosse criar um css da forma antiga, basicamente criaria um arquivo css colocaria as intruções e importava o arquivo. Mas, quando eu for executar todas as rotas receberam o mesmo css, pois a execução de arquivo css ocorre de forma global.
+  Então, é criado um arquivo styles.tsx. E importado o arquivo styled. E começo a criar os meus componentes estilizado. Criei também um arquivo global para armazenar o css que será utilizado em todas págnas da minha aplicação e importei no mu arquivo App. Coloquei o <> por volta, porque não posso ter o <BrowserRouter> e o <GlobalStyle> um embaixo do outro sem nada por volta deles.
 
-  Então, é criado um arquivo styles.tsx. E importado o arquivo styled. E começo a criar os meus componentes estilizado.
+```
+   <>
+    <BrowserRouter>
+      <Routes />
+    </BrowserRouter>
+    <GlobalStyle />
+  </>
+```
