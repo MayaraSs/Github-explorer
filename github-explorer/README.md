@@ -106,92 +106,92 @@
 
 # Criando a aplicação
 
-- [x] Criando as Rotas da aplicação.
+# [x] Criando as Rotas da aplicação.
 
-  Como a aplicação terá duas telas a Home e User é necessário ter alguma biblioteca que lida com o repasse de uma tela para outra.
+Como a aplicação terá duas telas a Home e User é necessário ter alguma biblioteca que lida com o repasse de uma tela para outra.
 
-  ```
-    yarn add react-router-dom
-  ```
+```
+  yarn add react-router-dom
+```
 
-  Crio uma pasta chamada Routes e dentro desta pasta crio um arquivo chamado index.tsx.
+Crio uma pasta chamada Routes e dentro desta pasta crio um arquivo chamado index.tsx.
 
-  Como vou precisar navegar na aplicação vou criar rotas e páginas, para isso vou criar um arquivo chamado pages dentro da pasta src. E geralmente é criada uma pasta para cada página para organizar tudo que é relacionado a uma página ficará dentro daquele arquivo.
+Como vou precisar navegar na aplicação vou criar rotas e páginas, para isso vou criar um arquivo chamado pages dentro da pasta src. E geralmente é criada uma pasta para cada página para organizar tudo que é relacionado a uma página ficará dentro daquele arquivo.
 
-  Criei duas pastas (Dashboard e Repository) em cada pasta criei um arquivo index.jsx e criei um componente simples.
+Criei duas pastas (Dashboard e Repository) em cada pasta criei um arquivo index.jsx e criei um componente simples.
 
-  Esqueci de add os tipos da biblioteca então executei o comando:
+Esqueci de add os tipos da biblioteca então executei o comando:
 
-  ```
-    yarn add @types/react-router-dom -D
-  ```
+```
+  yarn add @types/react-router-dom -D
+```
 
-  No arquivo de rotas importei as rotas. Criei um componente chamado Routes do tipo React.FC porque ele vai ser uma função que retorna alguma coisa. Eu vou ter um Switch por volta e a cada página da minha aplicação eu vou ter uma rota, eu passo um path indicando o caminho da minha rota e o componente que eu quero mostrar na tela.
+No arquivo de rotas importei as rotas. Criei um componente chamado Routes do tipo React.FC porque ele vai ser uma função que retorna alguma coisa. Eu vou ter um Switch por volta e a cada página da minha aplicação eu vou ter uma rota, eu passo um path indicando o caminho da minha rota e o componente que eu quero mostrar na tela.
 
-  ```
-    import React from 'react';
-    import { Switch, Route } from 'react-router-dom';
+```
+  import React from 'react';
+  import { Switch, Route } from 'react-router-dom';
 
-    import Dashboard from '../pages/Dashboard';
-    import Repository from '../pages/Repository';
+  import Dashboard from '../pages/Dashboard';
+  import Repository from '../pages/Repository';
 
-    const Routes: React.FC = () => (
-    <Switch>
-    <Route path="/" component={Dashboard}></Route>
-    </Switch>
-    );
+  const Routes: React.FC = () => (
+  <Switch>
+  <Route path="/" component={Dashboard}></Route>
+  </Switch>
+  );
 
-    export default Routes;
-  ```
+  export default Routes;
+```
 
-  O Switch basicamente permite o acesso a cada rota separada, eu consigo criar uma pagina para cada rota e acessar separadamente se eu tirar o Switch e apenas colocar um <> </> Aperacerá na tela todas as rotas descritas em apenas uma página. Então, o Switch garantirá que apenas uma rota seja acessada.
+O Switch basicamente permite o acesso a cada rota separada, eu consigo criar uma pagina para cada rota e acessar separadamente se eu tirar o Switch e apenas colocar um <> </> Aperacerá na tela todas as rotas descritas em apenas uma página. Então, o Switch garantirá que apenas uma rota seja acessada.
 
-  Fui dar um yarn start e deu um erro que nunca tinha visto, fui atrás dos desenvolvedores para solucionar.
+Fui dar um yarn start e deu um erro que nunca tinha visto, fui atrás dos desenvolvedores para solucionar.
 
-  ```
-    - Tive que criar um arquivo .env
-    - Inseri SKIP_PREFLIGHT_CHECK=true
-  ```
+```
+  - Tive que criar um arquivo .env
+  - Inseri SKIP_PREFLIGHT_CHECK=true
+```
 
-  Agora consigo verificar a minha aplicação, mas nada mudou porque dentro do meu App eu preciso mostrar as rotas.
+Agora consigo verificar a minha aplicação, mas nada mudou porque dentro do meu App eu preciso mostrar as rotas.
 
-  Após importadas as rotas e realizada a chamada deu um erro:
+Após importadas as rotas e realizada a chamada deu um erro:
 
-  ```
-    You should not use <Switch> outside a <Router>
-  ```
+```
+  You should not use <Switch> outside a <Router>
+```
 
-  Deu esse erro porque dentro do router-dom existe alguns tipos de router. Neste caso iremos utilizar o BrowserRouter, eu coloco ele por volta das rotas e ele funciona como o endereço e só colocar o path que ele acessa a página.
+Deu esse erro porque dentro do router-dom existe alguns tipos de router. Neste caso iremos utilizar o BrowserRouter, eu coloco ele por volta das rotas e ele funciona como o endereço e só colocar o path que ele acessa a página.
 
-  ```
-    import React from 'react';
-    import { BrowserRouter } from 'react-router-dom';
+```
+  import React from 'react';
+  import { BrowserRouter } from 'react-router-dom';
 
-    import Routes from './routes';
+  import Routes from './routes';
 
-    const App: React.FC = () => (
-    <BrowserRouter>
-    <Routes />
-    </BrowserRouter>
-    );
+  const App: React.FC = () => (
+  <BrowserRouter>
+  <Routes />
+  </BrowserRouter>
+  );
 
-    export default App;
-  ```
+  export default App;
+```
 
-  Mas, se criar uma nova rota e colocar o path no endereço ainda vou continuar acessando a rota antiga, porque o react-router-dom ele não faz uma verificação de igualdade do path com o caminho que inseri no endereço, ele faz apenas uma verificação de inclusão, ou seja, ele apenas verifica se existi uma barra e cai sempre na primeira rota, para resolver esse problema eu preciso inserir na minha rota a propriedade exact que irá faz uma verificação de igualdade.
+Mas, se criar uma nova rota e colocar o path no endereço ainda vou continuar acessando a rota antiga, porque o react-router-dom ele não faz uma verificação de igualdade do path com o caminho que inseri no endereço, ele faz apenas uma verificação de inclusão, ou seja, ele apenas verifica se existi uma barra e cai sempre na primeira rota, para resolver esse problema eu preciso inserir na minha rota a propriedade exact que irá faz uma verificação de igualdade.
 
-  ```
-    <Route path="/" exact component={Dashboard}></Route>
-  ```
+```
+  <Route path="/" exact component={Dashboard}></Route>
+```
 
-- [x] Aprendendo a utilizar o pacote do react Styled Components, esse pacote basicamente isola o css em componentes não afetando o restante da aplicação.
+# [x] Aprendendo a utilizar o pacote do react Styled Components, esse pacote basicamente isola o css em componentes não afetando o restante da aplicação.
 
-  ```
-    yarn add styled-components
-    yarn add @types/styled-components -D
-  ```
+```
+  yarn add styled-components
+  yarn add @types/styled-components -D
+```
 
-  Então, é criado um arquivo styles.tsx. E importado o arquivo styled. E começo a criar os meus componentes estilizado. Criei também um arquivo global para armazenar o css que será utilizado em todas págnas da minha aplicação e importei no mu arquivo App. Coloquei o <> por volta, porque não posso ter o <BrowserRouter> e o <GlobalStyle> um embaixo do outro sem nada por volta deles.
+Então, é criado um arquivo styles.tsx. E importado o arquivo styled. E começo a criar os meus componentes estilizado. Criei também um arquivo global para armazenar o css que será utilizado em todas págnas da minha aplicação e importei no mu arquivo App. Coloquei o <> por volta, porque não posso ter o <BrowserRouter> e o <GlobalStyle> um embaixo do outro sem nada por volta deles.
 
 ```
    <>
@@ -204,45 +204,45 @@
 
 Criei uma pasta chamada assets para armazenar todas as imagens utilizadas na aplicação.
 
-- [x] Estilizando Dashboard
+# [x] Estilizando Dashboard
 
-  Usando Css com typescript.
+Usando Css com typescript.
 
-  Entendendo o conceito de estado de componentes de encadeamento. Eu consigo colocar o input direto dentro do Form, isso significa que todo input dentro do Form vai ter esse stylo.
+Entendendo o conceito de estado de componentes de encadeamento. Eu consigo colocar o input direto dentro do Form, isso significa que todo input dentro do Form vai ter esse stylo.
 
-  ```
-    export const Form = styled.form`
-    margin-top: 40px;
-    max-width: 700 px;
+```
+  export const Form = styled.form`
+  margin-top: 40px;
+  max-width: 700 px;
 
-    display: flex;
+  display: flex;
 
-    input {
-      flex: 1;
-      height: 70px;
-      padding: 0 24px;
-      border: 0;
-      border-radius: 5px 0 0 5px;
-    }
-  ```
+  input {
+    flex: 1;
+    height: 70px;
+    padding: 0 24px;
+    border: 0;
+    border-radius: 5px 0 0 5px;
+  }
+```
 
-  Quando eu uso o & dentro do stylo eu estou m referindo ao próprio elemento.
+Quando eu uso o & dentro do stylo eu estou m referindo ao próprio elemento.
 
-  Adicionei a biblioteca polished. QUe permite trabalhar com cores para clarear, escurecer, etc.
+Adicionei a biblioteca polished. QUe permite trabalhar com cores para clarear, escurecer, etc.
 
-  ```
-  yarn add polished
-  ```
+```
+yarn add polished
+```
 
-  Para incluir js dentro do meu css sempre uso essa sintaxe \${ ...}.
+Para incluir js dentro do meu css sempre uso essa sintaxe \${ ...}.
 
-  Para adicionar ícone na aplicação foi adicionada a biblioteca
+Para adicionar ícone na aplicação foi adicionada a biblioteca
 
-  ```
-  yarn add react-icons
-  ```
+```
+yarn add react-icons
+```
 
-  - [x] Conectando a API
+# [x] Conectando a API
 
     Adicionei o axio que vai ser a biblioteca que vou utilizar para consumir a api.
 
@@ -252,28 +252,32 @@ Criei uma pasta chamada assets para armazenar todas as imagens utilizadas na apl
 
     No index do Dashboard importo a api e o useState para conseguir armazenar os repositorios em algum lugar.
 
-  Vou ter um estado para conseguir armazenar os repositorios e vai começar com os valores de um array vazio. Para relembrar a sintaxe const [repositories, setRepositories] o primeiro valor é o valor do stado em si e o segundo é o valor que será urilizado toda vez que precisar mudar o valor da variável e o useState([]) 'o valor inicial do estado.
+Vou ter um estado para conseguir armazenar os repositorios e vai começar com os valores de um array vazio. Para relembrar a sintaxe const [repositories, setRepositories] o primeiro valor é o valor do stado em si e o segundo é o valor que será urilizado toda vez que precisar mudar o valor da variável e o useState([]) 'o valor inicial do estado.
 
-  ```
-    const Dashboard: React.FC = () => {
-      const [repositories, setRepositories] = useState([])
-      return (
-  ```
+```
+  const Dashboard: React.FC = () => {
+    const [repositories, setRepositories] = useState([])
+    return (
+```
 
-  Crio uma função para lidar com a adição de novos repositórios. Terei que :
+Crio uma função para lidar com a adição de novos repositórios. Terei que :
 
-  ```
-     - Adicionar um novo repositório
-      - Consumir api
-      - Salvar novo repositório no estado
-  ```
+```
+   - Adicionar um novo repositório
+    - Consumir api
+    - Salvar novo repositório no estado
+```
 
-  Eu preciso de um estado para armazenar o valor do input. Então no input eu coloco qual valor dele que é o newRepo, e no onChange vai ser onde o usuário altera o valor do input eu vou receber um evento dentro desse evento eu tenho o valor dele disponível dentro do e.target.value então vou ter que utilizar isso para usar o meu setNewRepo.
+Eu preciso de um estado para armazenar o valor do input. Então no input eu coloco qual valor dele que é o newRepo, e no onChange vai ser onde o usuário altera o valor do input eu vou receber um evento dentro desse evento eu tenho o valor dele disponível dentro do e.target.value então vou ter que utilizar isso para usar o meu setNewRepo.
 
-  ```
-     <input
-          value={newRepo}
-          onChange={(e) => setNewRepo(e.target.value)}
-          placeholder="Digite o nome do repositório"
-        />
-  ```
+```
+   <input
+        value={newRepo}
+        onChange={(e) => setNewRepo(e.target.value)}
+        placeholder="Digite o nome do repositório"
+      />
+```
+
+A minha função vai ser executada quando o onSubmit foi acionado, então la irá receber como parâmetro o evento e preciso definir o tipo do evento. No React eu consigo importar um cara chamado FormEvent e definir ele como tipo. O FormEvent precisa receber o HTMLFormElement nao faço ideia o porque.
+
+Criei a interface repository para identificar a tipagem dos dados.
