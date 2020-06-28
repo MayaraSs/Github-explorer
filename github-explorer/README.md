@@ -235,3 +235,45 @@ Criei uma pasta chamada assets para armazenar todas as imagens utilizadas na apl
   ```
 
   Para incluir js dentro do meu css sempre uso essa sintaxe \${ ...}.
+
+  Para adicionar ícone na aplicação foi adicionada a biblioteca
+
+  ```
+  yarn add react-icons
+  ```
+
+  - [x] Conectando a API
+
+    Adicionei o axio que vai ser a biblioteca que vou utilizar para consumir a api.
+
+    ```
+    yarn add axios
+    ```
+
+    No index do Dashboard importo a api e o useState para conseguir armazenar os repositorios em algum lugar.
+
+  Vou ter um estado para conseguir armazenar os repositorios e vai começar com os valores de um array vazio. Para relembrar a sintaxe const [repositories, setRepositories] o primeiro valor é o valor do stado em si e o segundo é o valor que será urilizado toda vez que precisar mudar o valor da variável e o useState([]) 'o valor inicial do estado.
+
+  ```
+    const Dashboard: React.FC = () => {
+      const [repositories, setRepositories] = useState([])
+      return (
+  ```
+
+  Crio uma função para lidar com a adição de novos repositórios. Terei que :
+
+  ```
+     - Adicionar um novo repositório
+      - Consumir api
+      - Salvar novo repositório no estado
+  ```
+
+  Eu preciso de um estado para armazenar o valor do input. Então no input eu coloco qual valor dele que é o newRepo, e no onChange vai ser onde o usuário altera o valor do input eu vou receber um evento dentro desse evento eu tenho o valor dele disponível dentro do e.target.value então vou ter que utilizar isso para usar o meu setNewRepo.
+
+  ```
+     <input
+          value={newRepo}
+          onChange={(e) => setNewRepo(e.target.value)}
+          placeholder="Digite o nome do repositório"
+        />
+  ```
