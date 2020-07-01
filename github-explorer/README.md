@@ -244,13 +244,13 @@ yarn add react-icons
 
 # [x] Conectando a API
 
-    Adicionei o axio que vai ser a biblioteca que vou utilizar para consumir a api.
+Adicionei o axio que vai ser a biblioteca que vou utilizar para consumir a api.
 
-    ```
-    yarn add axios
-    ```
+```
+  yarn add axios
+```
 
-    No index do Dashboard importo a api e o useState para conseguir armazenar os repositorios em algum lugar.
+No index do Dashboard importo a api e o useState para conseguir armazenar os repositorios em algum lugar.
 
 Vou ter um estado para conseguir armazenar os repositorios e vai começar com os valores de um array vazio. Para relembrar a sintaxe const [repositories, setRepositories] o primeiro valor é o valor do stado em si e o segundo é o valor que será urilizado toda vez que precisar mudar o valor da variável e o useState([]) 'o valor inicial do estado.
 
@@ -263,21 +263,23 @@ Vou ter um estado para conseguir armazenar os repositorios e vai começar com os
 Crio uma função para lidar com a adição de novos repositórios. Terei que :
 
 ```
-   - Adicionar um novo repositório
-    - Consumir api
-    - Salvar novo repositório no estado
+ - Adicionar um novo repositório
+  - Consumir api
+  - Salvar novo repositório no estado
 ```
 
 Eu preciso de um estado para armazenar o valor do input. Então no input eu coloco qual valor dele que é o newRepo, e no onChange vai ser onde o usuário altera o valor do input eu vou receber um evento dentro desse evento eu tenho o valor dele disponível dentro do e.target.value então vou ter que utilizar isso para usar o meu setNewRepo.
 
 ```
-   <input
-        value={newRepo}
-        onChange={(e) => setNewRepo(e.target.value)}
-        placeholder="Digite o nome do repositório"
-      />
+ <input
+      value={newRepo}
+      onChange={(e) => setNewRepo(e.target.value)}
+      placeholder="Digite o nome do repositório"
+    />
 ```
 
 A minha função vai ser executada quando o onSubmit foi acionado, então la irá receber como parâmetro o evento e preciso definir o tipo do evento. No React eu consigo importar um cara chamado FormEvent e definir ele como tipo. O FormEvent precisa receber o HTMLFormElement nao faço ideia o porque.
 
 Criei a interface repository para identificar a tipagem dos dados.
+
+# - [x] Salvando no Storage
